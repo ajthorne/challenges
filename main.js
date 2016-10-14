@@ -130,7 +130,6 @@ function reverse(string) {
   let newString = string.split('');
   return newString.reverse('').join('');
 }
-
 // console.log(reverse('theme is vegetables'));
 
 
@@ -141,18 +140,94 @@ function reverse(string) {
 function rovarspraket(phrase){
   let newString = phrase.split('');
   let result = '';
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
 
-  for (var i=0; i < phrase.length; i++) {
-    // if (['a', 'e', 'i', 'o', 'u'].indexOf(newString) === -1) {
-    //   return result += (newString + 'o' + newString);
-    // }
-    if (newString !== 'a' || 'e' || 'i' || 'o' || 'u') {
-      return result += (newString + 'o' + newString)
+  for (var i=0; i < newString.length; i++) {
+    if (vowels.indexOf(newString) === -1) {
+    // if (newString[i] !== 'a' || 'e' || 'i' || 'o' || 'u') {
+      // console.log(newString[i] + 'o' + newString[i]);
+      result += (newString[i] + 'o' + newString[i])
     } else {
-      return result += newString;
+      // console.log(result += newString[i]);
+      result += newString[i];
     }
   }
-  return result.join('')
+  return result;
 }
+// console.log(rovarspraket('this is fun'));
 
-console.log(rovarspraket('this is fun'));
+// ---------------------
+// Write a function that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
+// ---------------------
+
+function isVowel(char) {
+  let vowels = ['a','e','i','o','u'];
+
+  if (char === 'a' || char === 'i' || char === 'e' || char === 'o' || char === 'u') {
+    return true;
+  } else {
+    return false;
+  }
+
+  // using array method...
+  if (vowels.indexOf(char) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// console.log(isVowel('a'));
+// console.log(isVowel('r'));
+
+function accum(str) {
+  for (var i=0; i < str.length; i++) {
+    console.log((str[i] + '-'));
+  }
+}
+// console.log(accum("abcd"));    // "A-Bb-Ccc-Dddd"
+// console.log(accum("RqaEzty")); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// console.log(accum("cwAt"));    // "C-Ww-Aaa-Tttt"
+
+
+// #1 - Factorial
+// In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
+
+// 5! = 5 * 4 * 3 * 2 * 1 = 120.
+// The value of 0! is 1.
+// Create the function factorial that receives n and returns n!. You have to use recursion.
+
+function factorial(num) {
+  if (num === 0) {
+    return 1
+  } else  {
+    return num * factorial(num-1)
+  }
+}
+// console.log(factorial(5));
+//what if you wanted to show values in an array?
+
+
+// Write a 'welcome' function that takes a parameter 'language' (always a string), and returns a greeting - if you have it in your database. It should default to English if the language is not in the database, or in the event of an invalid input.
+function greet(language) {
+	let language = {
+    english: 'Welcome',
+    czech: 'Vitejte',
+    danish: 'Velkomst',
+    dutch: 'Welkom',
+    estonian: 'Tere tulemast',
+    finnish: 'Tervetuloa',
+    flemish: 'Welgekomen',
+    french: 'Bienvenue',
+    german: 'Willkommen',
+    irish: 'Failte',
+    italian: 'Benvenuto',
+    latvian: 'Gaidits',
+    lithuanian: 'Laukiamas',
+    polish: 'Witamy',
+    spanish: 'Bienvenido',
+    swedish: 'Valkommen',
+    welsh: 'Croeso'}
+
+
+
+}
