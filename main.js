@@ -227,7 +227,30 @@ function greet(language) {
     spanish: 'Bienvenido',
     swedish: 'Valkommen',
     welsh: 'Croeso'}
-
-
-
 }
+
+
+function titleCase(title, minorWords) {
+  let newPhrase = title.split(' ');
+  let newMinor = minorWords.split(' ');
+  let result = '';
+
+  // for (var i=0; i < newPhrase.length; i++) {
+    // console.log(newPhrase[i]);
+    // console.log(newMinor);
+    // if (newMinor[i] === newPhrase[i]) {
+      // console.log(newMinor[i]);
+    // }
+  // }
+  if (newMinor.indexOf(newPhrase) === -1) {
+    
+  }
+  return result;
+}
+
+// if word is a minorword, don't capitalize
+
+console.log(titleCase('a clash of KINGS', 'a an the of'));
+// Test.assertEquals(titleCase('a clash of KINGS', 'a an the of'), 'A Clash of Kings')
+// Test.assertEquals(titleCase('THE WIND IN THE WILLOWS', 'The In'), 'The Wind in the Willows')
+// Test.assertEquals(titleCase('the quick brown fox'), 'The Quick Brown Fox')
