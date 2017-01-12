@@ -3,6 +3,72 @@
 //array methods to remember --
 //indexOf, filter, forEach, reduce
 
+//FizzBuzz
+function fizzBuzz() {
+  let array = [];
+
+  for (var i=0; i <= 100; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      array.push('fizzbuzz');
+    } else if (i % 3 === 0) {
+      array.push('fizz');
+    } else if (i % 5 === 0) {
+      array.push('buzz');
+    } else {
+      array.push(i)
+    }
+  }
+  return array;
+}
+// console.log(fizzBuzz());
+
+
+//Fibonacci
+// Write a function that calculates the nth term in the fibonacci sequence, where this sequence is defined as a series of numbers (0 1 1 2 3 5 8 13 ...), and where the sum of any term is the result of adding the previous two terms. Note: make sure that your solution can calculate larger terms (n > 30)!
+
+function fib(n) {
+  if (n === 0) {
+    return 0
+  } else
+    if (n < 2) {
+    return 1
+    //I need to define a condition for number 1, because this would cause a negative parameter.
+  } else {
+    return fib(n-2) + fib(n-1);
+    //recursive function
+  }
+};
+
+function fib(n) {
+  let num1 = 0;
+  let num2 = 1;
+  let result = 0;
+  let array = [];
+
+  if (n===1) {
+    return n;
+  } else {
+    for (var i=1; i < n; i++) {
+    //iterates through until it    reaches 'n'
+    result = num1 + num2;
+    //looks at previous two numbers       before 'n'
+    num1 = num2;
+    //assigning new value to num1 so it will increment
+    num2 = result;
+    array.push(result);
+  }
+  // console.log(array);
+  // return array;
+  return result;
+  }
+}
+// console.log(fib(0));
+// console.log(fib(1));
+// console.log(fib(2));
+// console.log(fib(3));
+// console.log(fib(4));
+// console.log(fib(99));
+
 
 //example of indexOf
 function getCount(str) {
@@ -21,6 +87,8 @@ function getCount(str) {
     return vowelsCount;
 }
 
+// console.log(getCount('apple'));
+
 //string methods to remember --
 //split(' ')
 //join('')
@@ -33,7 +101,7 @@ function getCount(str) {
 //object methods to remember --
 //Object.keys()
 
-let movies = [{
+let movie = [{
         title: 'Puff the Magic Dragon',
         duration: 90,
         stars: ['Kevin Spacey', 'Sissy Spacek']
@@ -79,7 +147,7 @@ function mostFrequent() {
         }
     });
     return +mode;
-    console.log(mode);
+    // console.log(mode);
 }
 
 mostFrequent();
@@ -235,15 +303,15 @@ function titleCase(title, minorWords) {
   let newMinor = minorWords.split(' ');
   let result = '';
 
-  // for (var i=0; i < newPhrase.length; i++) {
-    // console.log(newPhrase[i]);
-    // console.log(newMinor);
-    // if (newMinor[i] === newPhrase[i]) {
-      // console.log(newMinor[i]);
-    // }
-  // }
+  for (var i=0; i < newPhrase.length; i++) {
+    console.log(newPhrase[i]);
+    console.log(newMinor);
+    if (newMinor[i] === newPhrase[i]) {
+      console.log(newMinor[i]);
+    }
+  }
   if (newMinor.indexOf(newPhrase) === -1) {
-    
+
   }
   return result;
 }
@@ -254,3 +322,106 @@ console.log(titleCase('a clash of KINGS', 'a an the of'));
 // Test.assertEquals(titleCase('a clash of KINGS', 'a an the of'), 'A Clash of Kings')
 // Test.assertEquals(titleCase('THE WIND IN THE WILLOWS', 'The In'), 'The Wind in the Willows')
 // Test.assertEquals(titleCase('the quick brown fox'), 'The Quick Brown Fox')
+
+
+//FIND THE MODE
+function mode(arr) {
+  var modeObj = {};
+  var mostFrequent = 0;
+  var modeItem = {};
+  arr.forEach(function(item, val) {
+    modeObj[item] = modeObj[item] + 1 || 1;
+    if (modeObj[item] > mostFrequent) {
+      modeItem = item;
+      mostFrequent = modeObj[item];
+    }
+  });
+  return modeItem;
+}
+// console.log(mode([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]));
+
+//TAKE THE VOWELS OUT
+function shortcut(string){
+  string = string.split('');
+  vowels = ['a', 'e', 'i', 'o', 'u'];
+  newString = '';
+
+  for (var i=0; i < string.length; i++) {
+  if (vowels.indexOf(string[i]) === -1) {
+    newString += string[i];
+}
+}
+return newString;
+}
+// console.log(shortcut('hello'));
+
+//ISOGRAM
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+function isIsogram(word) {
+  var array = word.toLowerCase().split('');
+  // var object = {}
+  var newArray = [];
+
+  //if item occurs in obj already.. return false;
+  //if item doesn't occur.. return true;
+
+  array.forEach(function(item, i, arr) {
+    // console.log(array);
+    if (newArray.indexOf(item) === -1) {
+      newArray.push(item);
+      // console.log(newArray);
+      // console.log('old:', array);
+    }
+  })
+      if (newArray.length === array.length) {
+      return true;
+    } else {
+      return false;
+    }
+}
+// console.log(isIsogram('Dermatoglyphics'));
+// console.log(isIsogram('adam'))
+
+//LETTER COUNT
+function letterCount(string) {
+    var object = {};
+    string = string.replace(' ', '');
+    var word = string.split('');
+
+    for (var i = 0; i < word.length; i++) {
+        if (object[word[i]]) {
+          //if word exists in obj already... increment
+            object[word[i]] += 1;
+        } else {
+            object[word[i]] = 1;
+        }
+    }
+    return object;
+}
+// console.log(letterCount('hello world'));
+
+//can do same with forEach. instead of word[i], use 'item' or 'letter'
+// word.forEach(function(letter, i, arr)
+// {
+//   if (object[letter]) {
+//     object[letter] += 1;
+//   } else {
+//     object[letter] = 1;
+//   }
+//   return object;
+// });
+
+
+//PALINDROME
+function palindrome(str) {
+  str = str.replace(' ', '')
+  let newString = str.split('').reverse('').join('');
+
+  if (str === newString) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// console.log(palindrome('taco cat'));
+// console.log(palindrome('popcorn'));
